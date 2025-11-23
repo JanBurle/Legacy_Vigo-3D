@@ -1,0 +1,3 @@
+pushd /Applications/Music/SuperCollider_f/
+./scsynth -u 7000
+popd

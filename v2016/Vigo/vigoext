@@ -1,0 +1,17 @@
+// Copyright (c) 2002-16 Jan Burle <jan@c53.be>
+
+/** \file
+ *  \brief Vigo::3D extras include file.
+ *
+ *  Provides: configuration file (read/write) support, screen capture.
+ */
+
+#ifndef VIGO_EXT_HEADERS_INCLUDED
+#define VIGO_EXT_HEADERS_INCLUDED
+
+  #include "./common/types.hpp"
+  #include "./extras/config.hpp"
+
+#endif
+
+// eof

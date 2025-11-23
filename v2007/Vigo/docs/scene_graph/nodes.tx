@@ -1,0 +1,6 @@
+Scene Graph
+@</macros
+
+The core data structure that represents {VG} model is "scene graph".
+
+Objects that are part of the scene graph are [reference counted](refcnt.tx).

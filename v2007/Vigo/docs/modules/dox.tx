@@ -1,0 +1,4 @@
+Doxygen Documentation
+@</macros
+
+The {fn|dox/} folder contains Vigo (doxygen) documentation created by running `make dox`.

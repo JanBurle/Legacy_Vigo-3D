@@ -1,0 +1,62 @@
+Installation
+@<macros
+
+{Abstract|This page describes how to obtain and compile {VG}.}
+
+# Prerequisites
+To compile and use {VG}, your system needs the following software:
+
+ 1. gcc 4.x or 3.3+,
+ 1. OpenGL,
+ 1. Trolltech Qt4,
+ 1. libpng-dev (for the screen capture function),
+ 1. if you wish to build unit tests, install cppunit,
+ 1. to build html documentation files, you need doxygen and dot.
+//.
+
+## Trolltech Qt4
+
+{VG} uses the cross-platform toolkit *Qt* for its GUI elements --- windows, menus, interaction with the keyboard and mouse, etc. This is how you obtain and install Qt:
+
+{*1. Download the Open Source Edition of Qt from [](http://www.trolltech.com/developer/downloads/qt/index). Choose Qt/Mac/Windows/X11 depending on your system. The current Qt version is 4.1.4.
+1. Unpack the downloaded Qt archive into the directory {fn|/usr/local/Trolltech/Qt-4.1.4}. {shell|cd} into the directory.
+1. Run (sudo) {shell|./configure -fast -no-exceptions}. Or, if you do not plan to debug Qt (you will still be able to make {VG} debug builds), run (sudo) {shell|./configure -release -fast -no-exceptions}.
+1. Run (sudo) {shell|make} (it takes a fair while). _Do not_ run {shell|make install} --- Qt is already in the desired place.
+1. On Linux, shared Qt libraries are built in the {fn|./lib} subdirectory. {VG} applications need to find {fn|libQtCore.so.4}, {fn|libQtGui.so.4}, and {fn|QtOpenGL.so.4}. You may need to either (1) copy the required Qt libraries into one of the standard places ({fn|/usr/lib}, {fn|/usr/local/lib}), or create (symbolic) links there, or (2) add the directory with Qt shared libraries to the {shell|LD\_LIBRARY\_PATH} environment variable.*}
+1. Download the Open Source Edition of Qt from [](http://www.trolltech.com/developer/downloads/qt/index). Choose Qt for Mac/Windows/X11 depending on your system. (The current Qt version is 4.1.4.)
+1. Unpack the downloaded Qt archive into a temporary directory.
+1. Run {shell|./configure -fast -release -no-exceptions}.
+1. Run {shell|make} (it takes a fair while). When the make is finished, run {shell|sudo make install}.
+//.
+
+# Getting {VG} source code
+
+{VG} code is maintained as open source software on [SourceForge](:sf.net).
+
+- To browse {VG} source code, go to [{VG} project pages](:sf.net/projects/vigo) and click _Subversion/Browse Subversion Repository_.
+- To obtain {VG} code, run: {shell|svn co https://svn.sourceforge.net/svnroot/vigo}
+- To update the code (when we have made changes), run {shell|svn up} in the {fn|vigo} directory.
+//.
+
+# Building {VG}
+
+1. Set the environment variable {shell|QTDIR} to point to the directory where you have installed Qt4 (The default location is {fn|/usr/local/Trolltech/Qt-4.1.4}). For example, if you are using bash, the command is\
+{shell|export QTDIR=/usr/local/Trolltech/Qt-4.1.4}, or
+{shell|setenv QTDIR /usr/local/Trolltech/Qt-4.1.4} for csh.
+1. If you wish to build a debug version of {VG}, set the environment variable {shell|VIGO\_DEBUG} to a non-empty value: {shell|export VIGO\_DEBUG=1}, or edit the {filename|Makefile} and set the value of {shell|DEBUG} there.
+
+- Create initial dependence files by running {shell|make depend}. Any time when you change directory structure or any {code|#include} directive during development, rerun {shell|make depend}.
+- {shell|make all} or simply {shell|make} builds the {VG} library, examples and included models.
+- {shell|make check} builds {VG} unit tests (needs cppunit).
+- {shell|make dox} builds the documentation (needs doxygen and dot).
+
+To clean the build tree, run
+
+- {shell|make clean} to remove compiled files,
+- {shell|make clean_dep} to remove dependency files,
+- {shell|make cleanbuild} to clean and rebuild everything.
+//.
+
+# Running {VG} applications
+
+ - On Linux: you probably need to set the environment variable {shell|LD\_LIBRARY\_PATH} to {shell|$QTDIR/lib}, so the loader can find the required Qt shared libraries.

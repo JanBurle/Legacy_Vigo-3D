@@ -1,0 +1,4 @@
+OSC (Open Sound Control)
+@</macros
+
+The {fn|osc/} folder contains code used for sending and receiving OSC messages. Certain {VG} simulations use this feature.

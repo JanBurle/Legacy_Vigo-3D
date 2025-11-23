@@ -1,0 +1,9 @@
+Extras
+@</macros
+
+The {fn|extras/} folder contains classes that are not necessary for {VG} simulations, yet are often useful.
+
+Configuration files
+===================
+
+The file {fn|config.hpp} defines classes that manipulate configuration files.

@@ -1,0 +1,32 @@
+This example demonstrates a Vigo simulation that uses Open Dynamics Engine
+(http://www.ode.org/) to simulate physics.
+Hovering the mouse over an agent displays the agent's coordinates on the status
+line.
+
+To compile and run this example:
+
+1) Download, build and install ODE.
+
+2) To resolve conflicts between Vigo and ODE, edit the file ode/config.h
+   (/usr/local/include/ode/config.h):
+   - line 334: change "typedef char int8;" to "typedef signed char int8;"
+   - line 340: change "typedef short int16;" to "typedef signed short int16;"
+   - replace lines 347-348:
+       typedef short int32;
+       typedef unsigned short uint32;
+     with:
+       #ifdef VIGO_ODE_LINK
+       typedef signed   int   int32;
+       typedef unsigned int   uint32;
+       #else
+       typedef signed   short int32;
+       typedef unsigned short uint32;
+       #endif
+     Note: I do not know why ODE typedefs short (16bit) as (u)int32, but that's
+     how it is. By wrapping our typedefs in #ifdef VIGO_ODE_LINK/#else/#endif,
+     I make sure that we do not break ODE. Please let us know if you know
+     a better answer.
+
+3) Finally, in the Examples/5-odevigo directory, run "make depend" and "make".
+
+Many thanks to Marcin Pilat <http://pilat.org> for supplying this example.

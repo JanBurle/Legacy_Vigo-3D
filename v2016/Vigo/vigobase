@@ -1,0 +1,16 @@
+// Copyright (c) 2002-16 Jan Burle <jan@c53.be>
+
+/** \file
+ *  \brief Vigo::3D base types and objects include file.
+ *
+ *  Provides: common types.
+ */
+
+#ifndef VIGO_BASE_HEADERS_INCLUDED
+#define VIGO_BASE_HEADERS_INCLUDED
+
+  #include "./common/types.hpp"
+
+#endif
+
+// eof

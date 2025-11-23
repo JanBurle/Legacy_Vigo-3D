@@ -1,0 +1,42 @@
+Vigo Modules
+@</macros
+
+{VG} code files are loosely organized in 'modules', i.e., source files are grouped together in folders according to their purpose. The following text describes the modular structure of {VG}.
+
+Top level folders
+=================
+
+The top level folders contain independent packages, as follows:
+
+ - `Vigo`: The {VG} library itself.
+ - `Examples`: Example code that illustrates various {VG} aspects.
+ - `Models`: Several larger models that use {VG}.
+ - `docs`: This documentation. 
+
+The `Vigo` folder
+=================
+
+The top level folder `Vigo` contains the {VG} library source code. The following are its subfolders that represent separate modules. Note that the modules are a way of organizing of source files, but are compiled together into a single library, and not separately.
+
+@:com_tx:[common](common.tx)
+@:ext_tx:[extras](extras.tx)
+ - {com_tx}:	         Types, utility classes.
+ - [space](space.tx):	 {3D} algebra and simulation space.
+ - [vigo](vigo.tx):	 Visual interface.
+ - [QtVigo](QtVigo.tx):Qt interface.
+ - {ext_tx}:	         Additional utility code.
+ - [osc](osc.tx):	 Open Sound Control code.
+ - [check](check.tx):	 Unit tests.
+ - [dox](dox.tx):	 Doxygen documentation.
+
+The `Vigo` folder contains several top-level include files that provide a convenient way of including relevant groups of {VG} header files into your application code. The include files are:
+
+ - `vigobase`: Minimum {VG} features (types).
+ - `vigocmn`: {com_tx} {VG} module: types, utility classes, sockets, math ...
+ - `vigoapp`: {VG} application and GUI module.
+ - `vigosim`: {VG} 3D simulation support.
+ - `vigoogl`: OpenGL interface.
+ - `vigoosc`: Open Sound Control messaging.
+ - `vigoext`: {ext_tx}.
+
+In your development environment, set the `VIGODIR` environment variable. Then simply include the appropriate {VG} include file, e.g., `#include <vigocmn>`.

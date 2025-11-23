@@ -1,0 +1,17 @@
+// Copyright (c) 2002-16 Jan Burle <jan@c53.be>
+
+/** \file
+ *  \brief Vigo::3D OpenGL include file.
+ *
+ *  Provides: OpenGL.
+ */
+
+#ifndef VIGO_OGL_HEADERS_INCLUDED
+#define VIGO_OGL_HEADERS_INCLUDED
+
+  #include "./common/types.hpp"
+  #include "./common/ogl.hpp"
+
+#endif
+
+// eof

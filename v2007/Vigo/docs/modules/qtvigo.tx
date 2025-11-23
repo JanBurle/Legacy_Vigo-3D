@@ -1,0 +1,6 @@
+{VG} bridge to Trolltech Qt
+@</macros
+
+The {fn|QtVigo/} folder contains files with code that mimics the [visual interface](vigo.tx) classes. This code provides the specific Qt implementation of interface elements, using the [pImpl](/modules/common.tx#patterns) (pointer-to-implementation) pattern.
+
+It is possible that in the future we will provide user interface using different toolkits than Qt, for example FLTK2 (Fast and Light Toolkit), or interface to Cave^TM^, an immersive virtual reality environment.

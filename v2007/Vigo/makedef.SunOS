@@ -1,0 +1,8 @@
+OSDEFS	:= __SUNOS__
+OSLIBD  := $(QTDIR)/lib /usr/X11R6/lib
+OSLFLGS	:= -lposix4 -lsocket -lnsl
+QTINCD	:= $(QTDIR)/include
+OSCFLGS	:= $(foreach DIR,$(QTINCD),-I$(DIR))
+LIBS	:= -lvigo
+LIBS	+= -lXext -lX11 -lm -lGL -lGLU -lpthread -ldl
+LIBS	+= -lQtCore -lQtGui -lQtOpenGL

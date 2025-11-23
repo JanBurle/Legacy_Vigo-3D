@@ -1,0 +1,6 @@
+OSDEFS	:= __MACX__
+QTFWKD	:= $(QTDIR)/lib
+OSCFLGS	:= $(foreach DIR,$(QTFWKD),-F$(DIR))
+LIBS	:= -lvigo
+LIBS	+= -framework QtCore -framework QtGui -framework QtOpenGL
+LIBS	+= -framework OpenGL -framework GLUT

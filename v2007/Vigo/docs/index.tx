@@ -1,0 +1,46 @@
+Vigo::3D
+@<macros
+
+# Introduction
+
+*Vigo::3D* (or _Vigo^3D^_, or just _Vigo_ for short) is a framework for simulating and visualizing of three-dimensional scenes. {VG} is being developed as a research tool at the [ESD Group](http://swarm-design.org).
+
+{VG} is currently a "beta" type of software. It is already with success being used for several graduate and undergraduate simulation projects. Anyone is welcome to use {VG}, but ye be warned, me hearties, you'll be on a bleeding edge.
+
+Get a fresh copy of {VG} frequently!
+
+{VG} is pronounced _veeh-goh_. The name is a simple abbreviation of "__vi__sualization of __g__eometric __o__bjects", but {VG} is much more than that!
+
+{VG} was originally created as a platform for modelling of dynamical systems of interacting agents that move through a three-dimensional space, and perceive ("see") their neighbourhood: objects and other agents. Based on the perception and related knowledge, the agents choose how to act. Most of our projects are simulations based on this premise and use {VG} accordingly. {VG} is, nevertheless, designed in a flexible way and allows other ways as well.
+
+{VG} is written in C++ and uses OpenGL to render graphics. The code was developed with portability in mind. It currently compiles with gcc (4.0 and 3.3) and runs on:
+
+ - MacOSX
+ - various Linuxes
+ - Windows with MinGW,
+ - and other Unix-like systems.
+
+MacOSX (Tiger) is our development platform, and therefore {VG} always works there. Time to time we compile and test {VG} on a Linux (Debian, Scientific Linux) and fix whatever problems might be there. As for Windows/MinGW: we do not use Windows as of now, so it may require some code tweaking on your part, but we see no reason why {VG} should not run there. The same stands for other Unixes.
+//.
+
+# Licence
+
+{VG} is a software licensed under the Gnu General Public Licence (GPL).
+Briefly said, it means that:
+
+### You may:
+- distribute verbatim copies of {VG}, provided that you keep intact all copyright and warranty notices,
+- modify your copy of {VG} for your use, or create a software based on {VG}, and
+- distribute the modified version of {VG} or your work based on {VG}, provided that you (1) clearly identify what and when you have changed, and (2) that you license your work based on {VG} also under the GPL at no charge.
+//.
+### You may not:
+- copy, modify, sublicense, or distribute {VG} in any other way than said above,
+- modify or distribute {VG}, if you have not accepted the GPL licence terms,
+- restrict the terms of this licence when you distribute {VG} or a work based on {VG},
+- incorporate {VG} into proprietary programs.
+//.
+
+{VG} is licensed free of charge; therefore there is absolutely no warranty of any kind.
+
+{VG} is a copyrighted software. See the file {fn|COPYING}, that you have received with the {VG} distribution, for a detailed description of the GPL terms.
+//.

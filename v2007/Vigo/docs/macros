@@ -1,0 +1,31 @@
+_These pages are a work in progress._
+
+@:TODO:(_*TODO*: @0_)
+@:VG:Vigo
+@:VG3:Vigo::3D
+
+@:3D:Three-dimensional
+@:3d:three-dimensional
+
+@:Abstract:_@0_
+
+//file name
+@:fn:`@0`
+
+//a link to doxygen doc
+@:dox:[@0](*dox/html/@1.html@2)
+
+//file name, with a link to doxygen doc: name|extension
+@:filedox:[`@0.@1`](*dox/html/@0_8@1.html)
+
+//a link to doxygen doc of a class
+@:classdox:[@0](*dox/html/classvigo_1_1@0.html@2)
+
+//shell command
+@:shell:`@0`
+
+//code snippet
+@:code:`@0`
+
+//C++
+@:cpp:C++

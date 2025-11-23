@@ -1,0 +1,69 @@
+/*****************************************************************************\
+*    Copyright (c) 2006 by Ian G Burleigh           burleigh@cpsc.ucalgary.ca *
+*    https://github.com/phi53/Vigo-3D                                         *
+*                                                                             *
+*    This program is free software; you can redistribute it and/or modify     *
+*    it under the terms of the GNU General Public License as published by     *
+*    the Free Software Foundation; either version 2 of the License, or        *
+*    (at your option) any later version.                                      *
+*                                                                             *
+*    This program is distributed in the hope that it will be useful,          *
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of           *
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            *
+*    GNU General Public License for more details.                             *
+*                                                                             *
+*    You should have received a copy of the GNU General Public License        *
+*    along with this program; if not, write to the                            *
+*    Free Software Foundation, Inc.,                                          *
+*    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.                *
+*-----------------------------------------------------------------------------*
+* $Id: app.hpp 47 2006-06-21 10:34:49Z ian_b $
+\*****************************************************************************/
+
+/** \file  
+ *
+ *  Tonnetz
+ */
+
+#ifndef TONNETZ_APP_HPP_INCLUDED
+#define TONNETZ_APP_HPP_INCLUDED
+
+  #include <vigoapp>
+  #include "osclink.hpp"
+  #include "params.hpp"
+
+//----------------------------------------------------------------------------
+
+  class Application: public vigo::Application
+  {
+    SUPER(vigo::Application)
+    
+  public:
+    Application(pcstr name, int argc, pstr argv[])
+      : super(name,argc,argv), m_scLink(NULL)
+    {
+    }
+    
+   ~Application()
+    {
+      delete m_scLink;
+    }
+
+    static Application& Get()  { return (Application&)super::Get(); }
+    static SCLink&      SC()   { return *(Get().m_scLink);          }
+    
+    void InitSCLink()
+    {
+      m_scLink =
+        new SCLink(params::APP::port, params::SC::host.c_str(), params::SC::port);
+    }
+
+  private:
+    SCLink *m_scLink;
+  };
+  
+//-----------------------------------------------------------------------------
+
+#endif
+
+//** eof **********************************************************************

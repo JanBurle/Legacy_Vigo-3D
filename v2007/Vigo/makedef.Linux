@@ -1,0 +1,7 @@
+OSLIBD	:= $(QTDIR)/lib /usr/X11R6/lib
+QTINCD	:= $(QTDIR)/include
+OSCFLGS	:= $(foreach DIR,$(QTINCD),-I$(DIR))
+OSLFLGS	:= -Xlinker -rpath -Xlinker $(QTDIR)/lib
+LIBS	:= -lvigo
+LIBS	+= -lXext -lX11 -lm -lGL -lGLU -lpthread -ldl
+LIBS	+= -lQtCore -lQtGui -lQtOpenGL

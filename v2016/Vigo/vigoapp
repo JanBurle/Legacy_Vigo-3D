@@ -1,0 +1,24 @@
+// Copyright (c) 2002-16 Jan Burle <jan@c53.be>
+
+/** \file
+ *  \brief Vigo::3D application include file.
+ *
+ *  Include this file in your main.cpp file.
+ */
+
+#ifndef VIGO_APP_HEADERS_INCLUDED
+#define VIGO_APP_HEADERS_INCLUDED
+
+  #include "./common/types.hpp"
+
+  #include "./vigo/application.hpp"
+  #include "./vigo/window.hpp"
+  #include "./vigo/canvas.hpp"
+  #include "./vigo/camera.hpp"
+  #include "./vigo/actions.hpp"
+  #include "./vigo/simulation.hpp"
+  #include "./vigo/resource.hpp"
+
+#endif
+
+// eof

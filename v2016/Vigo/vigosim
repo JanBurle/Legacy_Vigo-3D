@@ -1,0 +1,23 @@
+// Copyright (c) 2002-16 Jan Burle <jan@c53.be>
+
+/** \file
+ *  \brief Vigo::3D simulation include file.
+ *
+ *  Provides: 3D algebra, space geometry and shapes, space management.
+ */
+
+#ifndef VIGO_SIM_HEADERS_INCLUDED
+#define VIGO_SIM_HEADERS_INCLUDED
+
+  #include "./common/types.hpp"
+
+  #include "./space/algebra.hpp"
+  #include "./space/geom.hpp"
+  #include "./space/shape.hpp"
+  #include "./space/nodeparts.hpp"
+  #include "./space/nodes.hpp"
+  #include "./space/scene.hpp"
+
+#endif
+
+// eof

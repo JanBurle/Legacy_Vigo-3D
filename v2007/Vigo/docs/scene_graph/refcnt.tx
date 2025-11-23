@@ -1,0 +1,13 @@
+Reference Counting
+@</macros
+
+Reference counted objects keep track of the number of references to them. See {dox|this page|group_\_grp_\_refctn_\_hpp} for implementation details.
+
+The templated class {dox|storage_base|classvigo_1_1util_1_1storage\__base} (and, of course, classes that inherit from it) is able to detect whether it has been allocated on the heap (dynamically, through `new`), or on the stack (automatically). Since {cpp} does not provide a standard way of finding, {VG} uses a trick((thanks to Scott Meyer))
+--- inside of an overloaded {dox|new|refcnt_8hpp-source} operator --- that works most of the time.
+
+The class {dox|storage_auto|classvigo_1_1util_1_1storage\__auto} stores the heap/stack information, {dox|storage_heap|classvigo_1_1util_1_1storage\__heap} and {dox|storage_stack|classvigo_1_1util_1_1storage\__stack} enforce the particular placemen t, i.e., an exception is thrown if an object is allocated at a wrong place.
+
+The class {dox|refcnt|classvigo_1_1util_1_1refcnt} is a base class for reference counted classes. An object keeps the count of references (the number of pointers of type {dox|refptr|classvigo_1_1util_1_1refptr}) to itself. If the count drops to zero, and if the object has been allocated dynamically (on the heap), it deletes itself.
+
+Most of classes that are used to make {VG} simulations are derived either from {dox|storage_auto<refcnt>|group_\_grp_\_refctn_\_hpp|#a0} (for objects that are allowed to be automatic or dynamic), or {dox|storage_heap<refcnt>|group_\_grp_\_refctn_\_hpp|#a1} (for [node](nodes.tx) objects).

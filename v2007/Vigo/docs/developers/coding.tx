@@ -1,0 +1,262 @@
+Vigo Coding Standards
+
+General
+=======
+
+This page describes the coding standard to which we try to adhere in Vigo development.
+
+Why have coding standards?
+--------------------------
+
+When a project adheres to common standards, good things happen:
+
+  - programmers can go into any section code and read it easily
+  - new people can orient themselves quickly in the code
+  - people new to C++ are do not need to develop their personal coding style
+  - in a consistent environment there will be fewer mistakes made
+  - programmers have a common enemy ;-)
+
+Why not to have coding standards?
+---------------------------------
+
+Now the bad: 
+
+  - the standard is usually stupid because it was made by someone else
+  - the standard is usually stupid because it's not what I do 
+  - standards reduce creativity 
+  - standards enforce too much structure 
+  - people ignore standards anyway
+
+Literate Programming
+--------------------
+
+Write programs that read as a good story. Inner workings of a literate program are plain and obvious.  
+
+_"Why I Must Write Readable Programs: Computer programs are fun to write, and well-written computer programs are fun to read. One of life's greatest pleasures can be the composition of a computer program that you know will be a pleasure for other people to read, and for yourself to read." (Donald E. Knuth)_
+
+Our coding standards
+====================
+
+Methods, functions, code blocks, ...
+------------------------------------
+
+Keep them short!
+
+Naming Conventions
+------------------
+
+  - Names should fit. Well chosen names make code readable.
+  - Use names of appropriate length: the shorter the scope (and life span of a thing), the shorter its name.
+  - The name of an entity should clearly indicate what it is, or what purpose it serves; and not necessarily what type or signature it has -- your IDE shows that information. One obvious exception could be pointers, because they are inherently unsafe.
+  - Use consistent naming across the system. Use names that communicate roles of entities.
+
+|entity|name after|format|example|comment
+|======|=================|======|=======|=======
+|namespace|package name|`xxxxxxxx`|`util`,`algebra`|use namespaces to group related entities
+|class | what is it | `XxxxXxxx` | `String`, `WalkingAgent`, `Lizard` |
+|function (method) | what does it do | `XxxxXxxx()` | `Save()`, `Open()`, `StartDownload()` | actions
+| | | | `IsOpen()`, `HasFeathers()` | predicates
+| | | | `Length()`, `Color()` | attribute values ('getters')
+| | | | `SetLength(length)`, `SetColor(red)` | attribute changes ('setters')
+| variable | what is it | `xxxxXxxx` | `dayOfWeek`, `size`, `firstName` | local variables
+| function argument | what is it |  |  | same as variables
+| data member | what is it | `m_xxxXxxx` | `m_price`, `m_age`, `m_attachedFile` | same as variables, prefix with `m_`
+| reference | | | `line`, `m_buffer` | same as (member) variables
+| pointer | | `pXxxXxx` | `pLine`, `m_pBuffer` | same as (member) variables, prefix with `p`; use references where possible
+| global variable | | `g_xxxXxxx` | same as variables, prefix with `g_` | avoid global variables, they are _evil_!
+| constant | | all capitals, optionally separated by `_` | MAXSIZE, BLACK_SQUARE |
+| type, typedef | | all lowercase (may vary) | pstr, vector, binary_tree |
+| enum constant | | same as constants, use a prefix to group them | `enum enum_color { colorWHITE, colorRED, colorBLACK };` |
+| macro | | same as constants | | | 
+
+
+### Further reading
+
+  - [](:c2.com/cgi/wiki?SystemOfNames)
+  - [](:www.objectmentor.com/resources/articles/naming.htm)
+
+Formatting
+----------
+
+### Indentation
+Indent size = 2, tab size = 8 characters. Always indent subordinate code. Prefer inserting spaces to using tabs (set in your editor preferences.) Try to limit line size to 79 (80-1) characters. 
+
+Start writing your code at the first indentation level. That will allow you to de-indent, if you need to.
+
+### Whitespace
+
+In the era of coloured syntax, less white space is needed to make text easily readable (that still does not guarantee code readability, though). Use white space discriminately to make text more compact on a fine scale, and separate parts of text on a larger grain scale. Use whitespace to improve readability.
+
+For example:
+
+    int Foo(uint i, bool&amp; b);
+    ...
+    for(pcstr p=text; *(p+1); p++)
+
+rather than
+
+    int Foo ( uint i, bool &amp; b);
+    ...
+    for ( pcstr p = text; *( p+1 ); p++ )
+
+### Braces
+
+Our brace style is:
+
+    void MyFunction()   if(condition1)
+    {                   {
+      int myVariable;     ...
+      ...               }
+    }                   else if(condition2)
+                        {
+                          ...
+                        }
+
+### Commenting
+
+  - Be sparse when commenting. Focus on clear, intention-revealing code. 
+  - The code should be self-documenting (see Literate Programming.) 
+  - Use comments to explain higher level ideas and ideas which are not obvious. 
+  - Use comments to separate logical sections of code. 
+  - Say what you are doing, not how. 
+  - Use comment to justify unexpected code constructs. 
+  - Use Doxygen style.
+  
+Code and Interfaces
+-------------------
+
+The code and interfaces shall be: 
+
+  - simple and consistent 
+  - complete and minimal 
+  - logical 
+  - elegant 
+  - portable, or ready to become portable 
+  - Indentation and spacing should reflect the code structure.
+  
+Code files
+----------
+Put declarations which you export into a `.h` (C) or `.hpp` (C++) header file, definitions and declarations which stay hidden from the rest of the system into a `.c` or `.cpp` file. Files should correspond to the modular structure of the system. 
+
+Blend In!
+---------
+
+As a rule of thumb, look around, adopt the philosophy of the existing code base, and invisibly blend in, where possible and feasible. 
+
+C++ - specific
+==============
+
+Inclusion Guards
+----------------
+
+Adopt consistent way of using inclusion guards (`#ifdef .. #define .. #endif`) in header files. ((>guards are an example where de-denting is useful))
+
+Program defensively
+-------------------
+  - Be explicit in stating your intentions. For example, use extra parentheses to specify intended precedence of operators in an expression. 
+  - Use strong typing. 
+  - Use `const` modifiers. 
+  - Minimize use of pointers. Favour references. 
+  - Do not use magic numbers. Use named constants instead. 
+  - Mind and handle error codes/exceptions
+  
+Types, macros and utility classes
+---------------------------------
+Use types, macros and utility classes found in the `./common` folder (`uint`, `pcstr`, `int32`, and such.) If we find ourselves using a type, class or pattern quite frequently, we should consider making it part of `./common`.
+
+Order of class members
+----------------------
+Recommended, with a grain of salt:
+
+    class A: public B
+    {
+      NO_GEN(S) 
+      SUPER(B)
+    
+    public: 
+      // the interface: ctors, dtors, getters, etc. 
+   
+    protected: 
+      // implementation, methods that should be accessible or 
+      // overloaded/overriden in subclasses
+   
+    private: 
+      // implementation details (methods, data)
+    };
+
+Put the method bodies in *.cpp in the same order as they are declared in *.hpp. 
+
+Grouping of `*`, `&`, and their modifiers
+-----------------------------------------
+
+Pointer and reference modifiers bind with the variable name, not the type, as in: `char *p, c;` where `p` is a pointer, while `c` is not. 
+
+However, since one reads _character-pointer p_ and not _character pointer-p_ it is more intuitive to group * and & with the type. 
+
+Therefore: 
+  - if the syntax allows only one name, group modifiers with types 
+  - if there is a _possibility_ of having more than one variable name, group modifiers with variables.   
+
+    class Computation
+    {
+    public:
+      Computation(Engine& engine): m_engine(engine)
+      {
+      }
+  
+      Engine& GetEngine()
+      {
+        return m_engine;
+      }
+  
+      Engine const& GetEngine() const
+      {
+        return m_engine;
+      }  
+  
+    private:
+      float  *m_data;
+      Engine &m_engine;
+    };
+
+The `const` modifier
+--------------------
+
+The `const` modifier frrreads as follows:
+ 
+ 1. `const char * p;` _a pointer to a constant character_ 
+ 2. `char const * p;` _a pointer to a character constant_ 
+ 3. `char * const p;` _a constant pointer to a character_ 
+ 4. `const char * const p;` _a constant pointer to a constant character_ 
+ 5. `char const * const p;` _a constant pointer to a character constant_ 
+ 6. `void Class::Method() const;` _a constant method ('this' is a constant pointer)_
+
+Notice that 1-2 and 4-5 are equvalent. Since in the cases of modifying the `*` and the `this` pointer, `const` follows what it modifies, it seems to be more consistent to use:
+
+    float const PI=3.14; /* read: a float constant pi */
+    ...
+    dish const& TodaysSpecial();
+
+rather than
+
+    const float PI=3.14; /* read: a constant float pi */
+    ...
+    const dish& TodaysSpecial();
+
+Also see `GetEngine` above. 
+
+Doxygen
+-------
+
+Use two styles of comments in the code. Standard C or C++ comments (//..., /*...*/) remain parts of the code. Special Doxygen comments (///..., /**...*/) produce hypertext documentation.
+
+TODOs
+-----
+
+Tag to-do places in the code with `TODO:` and a descriptive text. Tag places that must be revisited with a triple right angle bracket `>>>` and a text. Write your initials if the tag is intended mainly for you. Eventually, as issues are resolved, `TODO:` and `>>>` comments will be removed from the code. 
+
+    void Class::NewMethod() //ib>>> it is mine!
+    {
+      // TODO: write code here
+      // >>> will you need this, anybody?
+    }

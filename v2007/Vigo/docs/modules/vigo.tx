@@ -1,0 +1,152 @@
+{VG} visual interface
+@</macros
+
+The {fn|vigo/} folder contains {VG} application and interface code, including visual interface.
+
+Actions (callbacks)
+===================
+
+{filedox|actions|hpp}: actions are typically triggered in response to a control (user interface) event (as selecting a menu item, clicking a button, moving a slider, etc.). 
+
+AbstractAction
+==============
+An abstract class {classdox|AbstractAction} defines `operator()` that represents an abstract act of triggering an action. An action returns a `pvoid` value. The return value is in most cases ignored, but can be used to return the result of an action, for example.
+
+CallbackAction
+==========
+The `operator()` of {classdox|CallbackAction} calls a function, passing it a single argument of `pvoid` type. It is upon the programmer to cast the `pvoid` types carefully. Both the function address and the argument value are specified at the time of constructing an CallbackAction object:
+
+	#include <vigoapp>
+	#include <iostream>
+
+	// a callback function, its name prefixed with 'cb_'
+	pvoid cb_myAction(pvoid arg)
+	{
+	  std::cout << "The arg (int): " << (int)arg << std::endl;
+	  return (pvoid)123;
+	}
+
+	int main(int,pstr)
+	{
+	  // (an arbitrary arg value)
+	  vigo::CallbackAction action(cb_myAction,(pvoid)321);
+
+	  // trigger the action and print its result
+	  int res = (int)action();
+	  std::cout << "Action result: " << res << std::endl;
+
+	  return 0;
+	}           
+
+((>CallBack action is typically used for simple menu items))
+The callback function must be either a normal (global) function, or a static member function. In the latter case, use the `pvoid` parameter to pass the 'this' pointer (the address of the object):
+
+	#include <vigoapp>
+	#include <iostream>
+
+	class CallMe
+	{
+	private:
+	  pvoid Call()
+	  {
+	    std::cout << "Call received. This=" << this << std::endl;
+	    return 0;
+	  }
+
+	public:
+	  static pvoid cb_call(pvoid This)
+	  {
+	    return ((CallMe*)This)->Call();
+	  }
+	};
+
+	int main(int,pstr)
+	{
+	  CallMe obj1, obj2;
+
+	  vigo::CallbackAction action1(CallMe::cb_call,&obj1),
+	                       action2(CallMe::cb_call,&obj2);
+
+	  action1(); // call back the first object
+	  action2(); // and the second object
+	  return 0;
+	}    
+
+DataAction
+==========
+
+{classdox|DataAction} works similarly as CallbackAction. Its constructor takes an address of a variable which value should be changed prior the callback, and its `operator()` takes the new value of the variable:
+
+	class CallMe
+	{
+	public:
+	  int m_value;
+
+	private:
+	  pvoid Call()
+	  {
+	    std::cout << "Call received. This=" << this
+	              << ", value=" << m_value << std::endl;
+	    return 0;
+	  }
+
+	public:
+	  static pvoid cb_call(pvoid This)
+	  {
+	    return ((CallMe*)This)->Call();
+	  }
+	};
+
+	int main(int,pstr)
+	{
+	  CallMe obj;
+	  vigo::DataAction<int> action(CallMe::cb_call,&obj,&obj.m_value);
+
+	  action(12345);
+	  return 0;
+	}
+
+A `DataAction<bool>` specialization is used for checkable menu items:
+
+	typedef DataAction<bool> ToggleAction;
+
+{VG} application object
+=======================
+{classdox|Application}
+
+Camera
+======
+{classdox|Camera}
+
+Canvas
+======
+{classdox|Canvas}
+
+Controls
+========
+{dox|Control|classvigo_1_1control_1_1Control}
+
+Dock
+====
+{classdox|}
+
+Menu
+====
+{classdox|}
+
+Resources
+=========
+{classdox|}
+
+Simulation
+==========
+{classdox|}
+
+Timer
+=====
+{classdox|}
+
+Window
+======
+{classdox|}
+

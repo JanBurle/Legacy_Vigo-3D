@@ -1,0 +1,64 @@
+Common module: Types and utilities.
+@</macros
+
+The {fn|common/} folder contains utility types and classes that are used throughout the {VG} framework and applications. Users are encouraged to use the provided code whenever suitable.
+
+Types (C)
+=========
+
+To help consistent coding standards, and for easier portability of the code, we use our own typedefs for built-in types, macros for frequently repeated ("boilerplate") code, and a set of utility functions and classes that address portability issues, or are simply convenient.
+
+The file {filedox|types|h} contains {dox|typedefs|group_\_grp_\_types_\_c} and functions that can be used in plain C code. This file should be (and typically is) directly or indirectly included in any {VG} simulation code.
+
+Types (C+\+)
+============
+
+The file {filedox|types|hpp} defines portable {dox|types|group_\_grp_\_types_\_hpp}, macros that help to construct hierarchy of {dox|exception classes|group_\_grp_\_types_\_hpp_\_exc}, macros for {dox|defensive programming|group_\_grp_\_types_\_hpp_\_def}, various templated {dox|functions|group_\_grp_\_types_\_hpp_\_var}, and string manipulation {dox|helpers|group_\_grp_\_types_\_hpp_\_str}.
+
+1/2/3/4-tuple classes
+=====================
+
+The file {filedox|tuple|hpp} defines templated tuple classes of 1, 2, 3, and 4 (numeric) components, that support basic operations: assignment, comparison, arithmetic operations, stream operations. Tuple classes of ints, uints, floats, and doubles are predefined.
+
+The tuple classes are typically used to handle space coordinates, colour values, etc.
+
+1/2/3-dimensional arrays
+=======================
+
+The file {filedox|array|hpp} defines classes that encapsulate 1-, 2-, or 3-dimensional C-type arrays. In the release build, the code is almost as efficient as if using plain C-type arrays. In the debug build, the arrays are safer, i.e., they perform index boundary checking. The array classes also support additional operations, such as comparison, and indexing using tuples.
+
+Containers
+==========
+
+In {VG} code, we use STL (C+\+ Standard Library) classes for containers (e.g., `std::string`, `std::vector`, etc.). In addition to that, the file {filedox|splaytree|hpp} contains "splay tree" code -- an ordered self-balancing binary tree, with small memory footprint. Splay trees are used to implement associative containers.
+
+Asynchronicity support
+======================
+
+The file {filedox|async|hpp} defines classes that provide portable interface to a system's threads, mutexes, scritical sections, and semaphores.
+
+Math
+====
+
+The file {filedox|math|hpp} defines various constants and math functions.
+
+OpenGL support
+==============
+
+The file {filedox|ogl|hpp} provides interface to OpenGL functions, and error checking.
+
+Patterns {#patterns}
+========
+
+In the file {filedox|patterns|hpp} we keep useful design patterns, mostly for {VG} internal use. A separate {filedox|pimpl|hpp} file contains the "pointer to implementation" pattern that we use for GUI abstraction and separation from the Qt toolkit.
+
+Reference counting
+==================
+
+The scene graph data structure that is the core of {VG} models, is composed of objects  that can be referenced by multiple other objects. If the number of references drops to zero, an object can be automatically deallocated. This feature, if used judiciously, simplifies memory management. Reference counting is implemented in the file {filedox|refcnt|hpp}, and explained in more detail [here](/scene_graph/refcnt.tx).
+
+Sockets
+=======
+
+The file {filedox|socket|hpp} defines classes that wrap TCP and UDP sockets.
+

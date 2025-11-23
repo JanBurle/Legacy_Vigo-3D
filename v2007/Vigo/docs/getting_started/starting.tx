@@ -1,0 +1,43 @@
+Getting Started
+@</macros
+
+Using {VG} as a tool to model swarm behaviors allows a developer to forget about the nitty-gritty details and focus on the intended application. Nevertheless, some basic knowledge about {VG} is still needed in order to use this framework properly. In addition to the core functionality, {VG} contains many features that will save the developer time, so a basic knowledge of these features will be beneficial.
+
+A {VG} application will be divided into two logical parts: the physical space and the interface. 
+
+Physical Space
+==============
+
+{VG} combines all of the physical components of the simulation into a scene. A scene can then assume responsibility of the swarm dynamics needed for a multi-agent simulation. Interactive scheduling of individual agents and memory management of entities can be maintained. The simulation speed can be controlled regardless of the number of objects in the simulation so that everything runs smoothly. 
+
+## Nodes ##
+All virtual entities that have a presence within a scene (such as an agent) should be a {cpp} class that is derived from the vigo::space::Node class. This will provide any derived class with a set of functions needed to control the objects actions within the scene. For example, an objects position within the scene.
+
+In addition to a node's functionality, each node may have a primitive shape attached to it. An agent need not be a single shape. Instead it could be composed of several nodes, each with its own primitive shape. Any node can have zero or more nodes attached to it resulting in a tree-like structure. Nodes can be rotated or moved relative to the parent node's center position. By combining multiple nodes, complex agents may be created. A arm, for example, might be a node that was attached to a body node. There may be finger nodes attached to that arm node, and so on. A node's {code|SetShape(vigo::shape&)} function can be used to create a visual object and a node's {code|Add(Node&)} can be used to construct complex agents.
+
+### Scene ###
+For any virtual entity to exist within a scene with a physical presence it must first be added to the scene by using the root node that is held by the scene.
+
+{code|Root()} will return a reference to the scene's root node. Therefore, by calling {code|Root().Add(Node&)} a node will be attached to the scene.((There may be many definitions of what an "agent" may mean, but from this point forward any node attached directly to the root node will be considered an agent)) Once added, the node (and all its attached nodes) will exist in the simulation and will be displayed on the screen.
+
+
+Interface
+=========
+
+{VG} provides the developer with GUI components for creating an interface to display his or her application. A simple example for using these components can be found in the application example provided in {VG3}. 
+
+### Windows ###
+An application will be presented as one or more window(s). 
+
+### Canvas ###
+Every window will have exactly one canvas. A canvas will display what a camera sees.
+
+### Camera ###
+A camera is attached to a scene. This provides a canvas with an orientation and a perspective to show within a scene. {VG} provides mouse input to control the location and direction of a camera.
+
+### Menu ###
+Menus in {VG} are links to callback functions. The main advantage to this is that it allows for the inclusion of other interactive techniques to be added at a later time without the need to recoding an applications inputs.
+
+### Side Bar ###
+A side bar included in {VG} provides a developer with scroll bars, toggle buttons and input fields. 
+

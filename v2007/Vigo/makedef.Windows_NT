@@ -1,0 +1,13 @@
+OSLIBD	:= $(QTDIR)/lib
+QTINCD	:= $(QTDIR)/include
+OSCFLGS	:= $(foreach DIR,$(QTINCD),-I$(DIR))
+OSLFLGS	:= -Xlinker -rpath -Xlinker $(QTDIR)/lib
+LIBS	:= -lvigo
+LIBS	+= -lopengl32 -lglu32
+#LIBS	+= -lXext -lX11 -lopengl32 -lglu32 -lgdi32 -luser32 -lmingw32 -lqtmain
+#LIBS	+= -lglu32 -lglaux -lglut32 -lglib -lglut -luser32 -lqtmain -lmingw32 -ldl -lm
+#LIBS	+= -lXext -lX11 -lm -lGL -lGLU -lpthread -ldl
+LIBS	+= -lQtCore4 -lQtGui4 -lQtOpenGL4
+#LIBS        =        -L"c:\tmp\qt-win-opensource-src-4.2.3\lib" -L"c:\tmp\qt-win
+#-opensource-src-4.2.3\lib" -lopengl32 -lglu32 -lgdi32 -luser32 -lmingw32 -lqtmai
+#n -lQtOpenGL4 -lQtGui4 -lQtCore4

@@ -1,0 +1,20 @@
+Writing Your First Program
+@</macros
+
+A project template has been provided that contains all basic structures need to create a {VG} application. This is recommended as a starting point for anyone who is intending on using {VG} for creating a swarm simulation. 
+
+The template should include a cpp (and sometimes a hpp) file for several classes:
+
+ - agent
+ - app
+ - main
+ - params
+ - scene
+ - sim
+
+Additionally, there should be two other files:
+
+ - Makefile
+ - Template.cfg
+
+If compiled without modifying, the template will demonstrate several agents randomly walking through the scene.

@@ -1,0 +1,4 @@
+Documentation
+@<macros
+
+{VG} code is documented using [doxygen](:www.doxygen.org/index.html). The latest {VG} doxygen pages are [here](*dox/html/index.html).

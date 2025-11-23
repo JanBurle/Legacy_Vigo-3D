@@ -1,0 +1,105 @@
+Extreme Programming Primer
+@</macros
+
+{TODO|review and reformat the following text (that is commented out) to suit Vigo}
+
+{*
+==== Principles ====
+^ A good thing: ^ therefore we will...^
+|code reviews|review all the time (pair programming)|
+|testing|test all the time (unit testing, functional testing)|
+|design|design daily (refactoring)|
+|simplicity|use the simplest design that supports the //current// functionality|
+|architecture|use //metaphor//|
+|integration testing|integrate and test daily|
+|short iterations|use very short iterations|
+
+==== Promises ====
+XP promises to reduce risk and embrace change by adhering to the following: 
+  * Short release cycles and the smallest releases that make business sense ensure less change within a single release. 
+  * Implementing the high-priority features first prevent feature creep. 
+  * A comprehensive suite of tests guarantees quality. 
+  * The customer is a part of the team. 
+  * The programmers estimate their own tasks and thus are not asked to do the impossible.
+
+==== Four Variables ====
+  * **Cost** is constrained. 
+  * **Time** is a variable that will be fixed. 
+  * **Quality** is either high, or insanely high. That includes //internal// quality (the code), and //external// quality (customer satisfaction.) 
+  * **Scope** is a soft, easy-to-control variable. Provided that 
+    * we implement the important features first, and 
+    * we accomodate future change by simple design (that we can modify without fear) and automated tests.
+Cost, Time and Scope are control variables. //Quality is not.// 
+
+====Four Values ====
+  * **Communication.** Talk! Draw on white boards! Write to forums! Write to Wiki! 
+  * **Simplicity.** It is better to do a simple thing today and change it tomorrow. 
+  * **Feedback.** 
+    * A decision is made: test it immediately. 
+    * The customer writes a story: provide an estimate. 
+    * A new feature is implemented: run tests. 
+  * **Courage.** Be bold to try new ideas and change the design. 
+
+====The Development Cycle====
+  * Write a story (a description of features) 
+  * Make a to-do card 
+  * Identify test cases 
+  * Write unit tests. They fail to compile, obviously. 
+  * Create the interface. The tests now compile, but fail to pass. 
+  * Implement the features until the unit tests succeed. 
+  * Integrate the new features (refactor the rest of the system) until the integration tests succeed. 
+Note: Development is driven by tests. Changes are not restricted to the new code.
+
+====Basic Principles====
+  * **Rapid feedback.** Within seconds and minutes. 
+  * **Assume simplicity.** 
+  * **Incremental change.** 
+  * **Embracing change.** Preserve options while solving the most pressing problem. 
+  * **Quality work.** That is a given. 
+  * **Open communication.** No hard feelings. 
+  * **Small initial investment.** Get by with fewer resources than would be comfortable. 
+  * **Play to win** and not "not to lose." 
+  * **Travel light.** Few, simple, valuable. 
+  * **Accepted responsibility.** Responsibility is accepted, not given. 
+  * **Honest measurements.** "About two weeks" 
+
+====Activities====
+  * **Coding** The only thing we cannot do without. Use code to communicate. 
+  * **Testing** Write every test you can imagine that could break. You will have confidence in making changes. A feature without an automated test does //not// exist. You do not have to write a test for each method (eg. getters), only for those that //could// break. 
+  * **Listening** To customers, to ... 
+  * **Designing** Create a structure that fights entropy. Every piece of design justifies its existence. Put in what you need when you need it. A simple design: 
+    * runs all the tests 
+    * has //no// duplicated logic 
+    * states important intentions 
+    * has the fewest classes and methods (is minimal and, eventually, complete.) 
+  * **Refactoring** Simplify, move, change everywhere where needed (see: collective ownership), while //running all the tests.// Each refactoring is a reversible step: try, then accept or roll back. 
+  * **Pair Programming** Two people write code together. 
+
+====Collective Ownership====
+//No// ownership of code leads to chaos. //Individual// ownership limits making changes and promotes "isolated geniuses." In //collective// ownership everyone takes resposibility for the whole of the system. Collective ownership will not work, unless: 
+  * automated tests ensure that the code will not break, 
+  * coding standards prevent "ugly brace wars", and 
+  * source code versioning allows to see who changed what and when. 
+Under collective ownership, complex or bad code will not live too long. Someone finds it and either simplifies and improves it, or throws it away. Fix freely what you need to fix in everyone else's code, and be prepared that they will fix yours. 
+
+====Design Strategy====
+Simplicity: 
+  * The system (code+tests) must communicate everything you want to communicate. 
+  * The system must contain no duplicate code. 
+  * The system must have the fewest possible classes. 
+  * The system must have the fewest possible methods. 
+
+====Testing Strategy====
+Write tests for: 
+  * nothing: not satisfactory 
+  * everything: not possible and necessary 
+  * what //could// break: that's it! Code that cannot be tested easily is not factored properly.
+Who writes tests: 
+  * Programmers: method-by-method (unit) tests. Unit tests run always at 100%. 
+    * If the interface is unclear, write the test first. 
+    * If the implementation is the least bit complicated, write the test first. 
+    * If the method can be used in an unusual way, write a test for the circumstance. 
+    * If you find a problem later, write a test for it. 
+    * If you are about to refactor some code and there is no test, write a test first. 
+  * Customers: story-by-story (functional) tests. Functional tests run at <100%.
+*}

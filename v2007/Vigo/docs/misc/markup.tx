@@ -1,0 +1,191 @@
+Markup ('Markdown') language.
+
+These webpages are written using an enhanced form of the [PHP Markdown Extra](:www.michelf.com/projects/php-markdown/extra/) language. Markdown Extra itself is based on [Markdown](:daringfireball.net/projects/markdown/syntax) with few syntax extensions. Their pages describe the language syntax.
+
+tx
+==
+
+Our enhanced form of the markup language is called 'tx'. _tx_ has these extensions (compared to Markdown Extra):
+
+###Headers#
+Headers underlined by `=` (level 1) or `-` (level 2) are included in the table of contents. Headers marked by `#` are not.
+
+###Comments#
+A line that begins with `//` is ignored.\
+`// Ignored line`
+// Ignored line
+
+Anything between `{*` and `*}` is ignored.
+
+###Forced line breaks#
+`\\` at the end of a line (it may be followed by spaces) followed by a space or end of line forces a line break.\
+`A line\`\
+`broken.`=>\
+A line\
+broken.
+
+###Include files#
+A line in the form `@<filename` is replaced by the contents of the file 'filename'. 'filename' may be a path name; if it begins with a `/`, the path name is absolute (relative to the website root), otherwise it is relative to the current page file.
+
+###Macros#
+A line in the form of `@:macroname:macrotext` defines a macro. The macro text may contain sequences `@0`, `@1`, etc., that will be replaced by macro arguments. A macro is invoked by `{macroname|arg0|arg1|...}` (the argument sequence, including the `|` characters, is optional).
+
+###Conditionals#
+`{?cond|T|F}` evaluates to `T` if `cond` is a non-empty string, and to `F` otherwise. `{!cond|F|T}` works conversely.
+
+###Title#
+The first line of a file is the file's title, displayed as the main header of the page.
+
+###Text and code files#
+Content of files with names ending in `.abc`, `.h`, `.c`, `.hpp`, `.cpp`, and `.sc` is displayed as verbatim code, except of special comment blocks `/*@> .. <@*/`, which contents are interpreted as _tx_ formatted text. Files of other types are interpretted as _tx_ formatted text.
+
+###Text style#
+Strong text is marked up as `*strong*` (*strong*), emphasized as `_em_` (_em_) or `**em**` (**em**), underscored as `__u__` (__u__), superscript as `^sup^` (^sup^).
+
+###Special characters#
+Instead of encoding HTML special characters as `&name;`, use a macro syntax `{&name}`;
+
+The following characters can be encoded as:
+`<=>`<=>, `=>`=>, `<=`<=, `<->`<->, `->`->, `<-`<-, `<<`<<, `>>`>>, `---`--- (mdash), `--`-- (ndash), `...`... (ellipsis).
+
+Pairs of single and double quotes are typeset: `'single'`'single', `"double"`"double".
+
+Hard (non-breakable) spaces can be encoded as `{ }`, `{  }`, etc.
+
+###Special formatting
+`{~Fmt|text}` delimits a text span with a special format Fmt (`HTML <span class=Fmt>Text</span>`).
+
+###Tables#
+Draw tables with `|` and `=`, not `-`.
+
+###Notes###
+((>margin notes))Text may contain `((footnotes))`((footnotes)) and `((>margin notes))`.
+
+###Quotes###
+`[[Quoted text]]` appears like so:[[Quoted text]]
+
+###Links###
+URLs in links (`[text](url)`) are interpreted: `(:url)` or `(http://...)` as external http:// links, `(*url)` as internal (on the server) http:// links, otherwise as links between _tx_ pages.
+
+If the link text is not specified, the url will be used as the text, e.g. `[](:sf.net)` becomes [](:sf.net).
+
+Folders
+-------
+The organization of pages closely resembles folder and file structure. Every folder may contain two special files : `Entries` and `Footer`. The content of the file `Footer` is simply copied as HTML code to the last part of a page. If the file does not exist in a folder, the system looks for it in the folder above.
+
+The file `Entries` lists the items (files and subfolders) that are displayed as items of a menu, and represent pages (files) and groups of sub-pages (subfolders). If the file `Entries` does not exist, all files and subfolders are shown, except the file `Footer` (if it exists).
+
+The format of `Entries` is as follows: The first line contains the 'index' file name: the file which contents will be shown if the subfolder is selected. The rest of the lines are files or subfolders in their appearance on the menu. On each line, a file may be optionally followed by a vertical bar (`|`) and a display text that will be used for the particular menu item. Following a subdirectory name with a display text has no effect; the display text is determined by the (optional) first line part in its `Entries` file.
+
+some HTML special characters
+----------------------------
+{&Alpha}
+{&pi}
+{&Pi}
+
+{&bull}
+{&prime}
+{&Prime}
+{&oline}
+{&frasl}
+
+{&weierp}
+{&image}
+{&real}
+{&alefsym}
+
+{&forall}
+{&part}
+{&exist}
+{&empty}
+{&nabla}
+{&isin}
+{&notin}
+{&ni}
+{&prod}
+{&sum}
+{&minus}
+{&lowast}
+{&radic}
+{&prop}
+{&infin}
+{&ang}
+{&and}
+{&or}
+{&cap}
+{&cup}
+{&int}
+{&there4}
+{&sim}
+{&cong}
+{&asymp}
+{&ne}
+{&equiv}
+{&le}
+{&ge}
+{&sub}
+{&sup}
+{&nsub}
+{&sube}
+{&supe}
+{&oplus}
+{&otimes}
+{&perp}
+{&sdot}
+{&lceil}
+{&rceil}
+{&lfloor}
+{&rfloor}
+{&lang}
+{&rang}
+
+{&loz}
+{&spades}
+{&clubs}
+{&hearts}
+{&diams}
+
+{&nbsp}
+{&iexcl}
+{&cent}
+{&pound}
+{&curren}
+{&yen}
+{&brvbar}
+
+{&sect}
+{&uml}
+{&copy}
+{&ordf}
+
+{&not}
+{&shy}
+{&reg}
+{&macr}
+{&deg}
+{&plusmn}
+{&sup2}
+{&sup3}
+{&micro}
+{&para}
+{&middot}
+{&cedil}
+{&sup1}
+{&ordm}
+{&frac14}
+{&frac12}
+{&frac34}
+{&iquest}
+{&Agrave}...
+{&times}
+{&divide}
+
+{&OElig}
+{&oelig}
+{&Scaron}...{&scaron}
+{&sbquo}
+{&bdquo}
+{&dagger}
+{&Dagger}
+{&permil}
+{&euro}

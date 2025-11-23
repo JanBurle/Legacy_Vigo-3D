@@ -1,0 +1,26 @@
+// Copyright (c) 2002-16 Jan Burle <jan@c53.be>
+
+/** \file
+ *  \brief Vigo::3D "common" library
+ *
+ *  Provides: common types.
+ */
+
+#ifndef VIGO_COMMON_HEADERS_INCLUDED
+#define VIGO_COMMON_HEADERS_INCLUDED
+
+  #include "./common/types.hpp"
+  #include "./common/array.hpp"
+  #include "./common/async.hpp"
+  #include "./common/math.hpp"
+  #include "./common/ogl.hpp"
+  #include "./common/patterns.hpp"
+  #include "./common/pimpl.hpp"
+  #include "./common/refcnt.hpp"
+  #include "./common/socket.hpp"
+  #include "./common/splaytree.hpp"
+  #include "./common/tuple.hpp"
+
+#endif
+
+// eof

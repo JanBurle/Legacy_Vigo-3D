@@ -1,0 +1,12 @@
+.PHONY: all clean
+
+all:
+	$(MAKE) -f ../vigoapp.mak $@ VIGOAPP=$(VIGOAPP)
+
+clean:
+	$(MAKE) -f ../vigoapp.mak $@ VIGOAPP=$(VIGOAPP) OMIT_DEPS=1
+
+help:
+	echo "usage: make [all|clean]"
+
+# eof

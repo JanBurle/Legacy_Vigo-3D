@@ -1,0 +1,54 @@
+3D space
+@</macros
+
+The {fn|space/} folder contains the core of {VG} code: support for {3d} space structures.
+
+3D algebra
+==========
+
+The file {filedox|algebra|hpp} defines classes and operations that support an {dox|algebra|group_\_grp_\_algebra_\_hpp} of {3d} space.
+
+3D Appearance
+=============
+
+{filedox|appearance|hpp}: appearance (colour, light, etc.).
+
+Colours
+=======
+
+{filedox|color|hpp}: colour and transparency.
+
+Geometry
+========
+
+{filedox|geom|hpp}: parametric curves and surfaces.
+
+Messaging
+=========
+
+{filedox|message|hpp}: _Message_ structure, used for communication among scene nodes.
+
+Node parts
+==========
+
+{filedox|nodeparts|hpp}: Parts of which [nodes](/scene_graph/nodes.tx) are assembled.
+
+Nodes
+==========
+
+{filedox|nodes|hpp}: [Nodes](/scene_graph/nodes.tx) are used to form a scene graph.
+
+Scene
+==========
+
+{filedox|scene|hpp}: Handles the scene graph.
+
+Shapes
+==========
+
+{filedox|shape|hpp}: Geometric shapes.
+
+Subdivision of space
+==========
+
+{filedox|subspace|hpp}: Space subdivision is necessary for an efficient neighbourhood computation.
